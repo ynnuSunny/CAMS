@@ -10,14 +10,15 @@
 
 <body>
     <a href="{% url 'logout' %}"> Logout</a>
+    <a href="{% url 'view-alluser' %}"> View Stuff And Empoyee</a>
     <br>
     <br>
-    <form>
-
+    <form method="POST" action="{% url 'create-user' %}">
+        {% csrf_token %}
         <label> Firstname </label>
-        <input type="text" name="firs_tname" size="15" /> <br> <br>
+        <input type="text" name="first_name" placeholder="First Name"> <br> <br>
         <label> Lastname: </label>
-        <input type="text" name="last_name" size="15" /> <br> <br>
+        <input type="text" name="last_name" required /> <br> <br>
 
         
         <br>
@@ -25,21 +26,21 @@
         <label>
             Select User Type:
         </label><br>
-        <input type="radio" name="role" value="EMPLOYEE"/> Employee<br>
-        <input type="radio" name="role" value="STAFF"/> Staff <br>
+        <input type="radio" name="role" value="EMPLOYEE" required/> Employee<br>
+        <input type="radio" name="role" value="STAFF" required/> Staff <br>
         <br>
         <br>
 
         
         <br> <br>
            Email:
-        <input type="email" id="email" name="email" /> <br>
+        <input type="email"  name="email" required/> <br>
         <br> <br>
            Password:
-        <input type="Password" id="pass" name="pass"> <br>
+        <input type="Password"  name="password" required> <br>
         <br> <br>
         
-        <input type="button" value="Submit" />
+        <input type="submit" value="Submit" />
     </form>
 </body>
 

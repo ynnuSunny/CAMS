@@ -61,8 +61,7 @@ def home(request):
 
 @login_required
 def create_user(request):
-    if request.user.is_authenticated:
-        return redirect('home')
+
     if request.method=='POST':
         manager = request.user
         company_name = manager.company_name
@@ -88,11 +87,26 @@ def create_user(request):
                 employee = Employee.objects.create(company_name=company_name,
                         company_website=company_website,company_id=company_id,
                         first_name=first_name,last_name=last_name,password=password,email=email,username=username)
-
+               
                 employee.save()
                 return redirect('home')
+
+                
             
         except:
             return render(request,"index.html",{"msg":"input are not valid"})
 
-
+@login_required
+def view_alluser(request):
+    admin = request.user
+    if(admin.role =="MANAGER"):
+        #.values() list e convert korse
+       employee = User.objects.filter(company_id=admin.company_id).filter(role="EMPLOYEE")
+       staff = User.objects.filter(company_id=admin.company_id).filter(role="STUFF")
+       context ={
+          'employee' : employee,
+          'staff' : staff
+       }
+       return render(request,"view_user.html",context)
+    
+    
