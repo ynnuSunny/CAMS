@@ -100,7 +100,6 @@ def create_user(request):
 def view_alluser(request):
     admin = request.user
     if(admin.role =="MANAGER"):
-        #.values() list e convert korse
        employee = User.objects.filter(company_id=admin.company_id).filter(role="EMPLOYEE")
        staff = User.objects.filter(company_id=admin.company_id).filter(role="STUFF")
        context ={
@@ -108,5 +107,18 @@ def view_alluser(request):
           'staff' : staff
        }
        return render(request,"view_user.html",context)
+
+    if(admin.role =="STUFF"):
+        
+       employee = User.objects.filter(company_id=admin.company_id).filter(role="EMPLOYEE")
+       
+       context ={
+          'employee' : employee,
+       }
+       return render(request,"view_user.html",context)
+       
+    return HttpResponse("<h1>User are not authorized for this page<h1>")
+    
+
     
     
