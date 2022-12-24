@@ -26,7 +26,8 @@ class User(AbstractUser):
             self.role = self.base_role
             return super().save(*args,**kwargs)
 
-
+#devide the user with there model role
+#to access data role based we create 3 
 
 class ManagerManager(BaseUserManager):
     def get_queryset(self,*args,**kwargs):
