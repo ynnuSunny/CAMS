@@ -9,7 +9,7 @@ class User(AbstractUser):
     #CAMS has 3type of user, this role class is basicly for seting role of a user
     class Role(models.TextChoices):
         MANAGER = "MANAGER",'Manager'
-        STUFF = "STUFF",'Stuff'
+        STAFF = "STAFF",'Staff'
         EMPLOYEE = "EMPLOYEE",'Employee'
     
     #creating some extra field for user table
@@ -44,15 +44,15 @@ class Manager(User):
     def welcome(slef):
         return "Only for managers"
 
-class StuffManager(BaseUserManager):
+class StaffManager(BaseUserManager):
     def get_queryset(self,*args,**kwargs):
         result =  super().get_queryset(*args,**kwargs)
-        return result.filter(role=User.Role.STUFF)
+        return result.filter(role=User.Role.STAFF)
 
 
-class Stuff(User):
-    base_role = User.Role.STUFF
-    stuff = StuffManager()
+class Staff(User):
+    base_role = User.Role.STAFF
+    staff = StaffManager()
     class Meta:
         proxy = True
 

@@ -58,3 +58,41 @@ def logout(request):
 @login_required
 def home(request):
     return render(request,"home.html")
+
+@login_required
+def create_user(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    if request.method=='POST':
+        manager = request.user
+        company_name = manager.company_name
+        company_website = manager.company_name
+        company_id = manager.company_id
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        role = request.POST['role']
+        # hasing password
+        password = make_password(request.POST['password'])
+        email = request.POST['email']
+        username = request.POST['email'] #set username fields as email we will use django defult django authentication
+        
+        try:
+            if(role=="STAFF"):
+                staff = Staff.objects.create(company_name=company_name,
+                        company_website=company_website,company_id=company_id,
+                        first_name=first_name,last_name=last_name,password=password,email=email,username=username)
+
+                staff.save()
+                return redirect('home')
+            if(role=="EMPLOYEE"):
+                employee = Employee.objects.create(company_name=company_name,
+                        company_website=company_website,company_id=company_id,
+                        first_name=first_name,last_name=last_name,password=password,email=email,username=username)
+
+                employee.save()
+                return redirect('home')
+            
+        except:
+            return render(request,"index.html",{"msg":"input are not valid"})
+
+

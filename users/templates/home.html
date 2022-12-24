@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-     <a href="{% url 'logout' %}"> Logout</a>
+    <a href="{% url 'logout' %}"> Logout</a>
+    <br>
+    <br>
+    <form>
+
+        <label> Firstname </label>
+        <input type="text" name="firs_tname" size="15" /> <br> <br>
+        <label> Lastname: </label>
+        <input type="text" name="last_name" size="15" /> <br> <br>
+
+        
+        <br>
+        <br>
+        <label>
+            Select User Type:
+        </label><br>
+        <input type="radio" name="role" value="EMPLOYEE"/> Employee<br>
+        <input type="radio" name="role" value="STAFF"/> Staff <br>
+        <br>
+        <br>
+
+        
+        <br> <br>
+           Email:
+        <input type="email" id="email" name="email" /> <br>
+        <br> <br>
+           Password:
+        <input type="Password" id="pass" name="pass"> <br>
+        <br> <br>
+        
+        <input type="button" value="Submit" />
+    </form>
 </body>
+
 </html>
