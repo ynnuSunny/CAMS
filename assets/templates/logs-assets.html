@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     {% for i in logs %}
+        
+        Date: {{ i.date_of_activity }}
+        <br>
+        Activity: {{ i.activity}}
+        <br>
+        {% if i.accept_reason is not None %}
+          Request Reason : {{ i.accept_reason}}
+          <br>
+        {% endif %}
+        
+    
+
+        <hr>
+
+     {% endfor %}
+</body>
+</html>

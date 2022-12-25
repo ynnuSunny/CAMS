@@ -20,4 +20,3 @@ class AssetLogs(models.Model):
     date_of_activity = models.DateTimeField(default=timezone.now)
 
     
-        

@@ -12,13 +12,24 @@
       <p>{{ i.assets_name }}</p>
       <img src="{{ i.image }}" alt="">
       <br>
-
+      <p>{{ role }}</p>
+      {% if role is "EMPLOYEE" %}
       <form method ="POST" action="{% url 'request-assets' %}">
           {% csrf_token %}
           <input type="text" placeholder="request reason" name="request_reason">
           <input type="number" hidden name="id" value="{{ i.id }}">
           <input type="submit" name="request" value="request">
       </form>
+      {% endif %}
+
+      {% if role == "MANAGER" %}
+      <form method ="POST" action="{% url 'logs-assets' %}">
+          {% csrf_token %}
+          <input type="number" hidden name="id" value="{{ i.id }}">
+          <input type="submit" name="request" value="view logs">
+      </form>
+      {% endif %}
+
     {% endfor %}
     
 </body>
