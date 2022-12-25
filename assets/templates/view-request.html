@@ -33,9 +33,9 @@
       {% if i.request_accepted_by is not NULL %}
       <form method ="POST" action="{% url 'assets-persmission' %}">
         {% csrf_token %}
-      <input type="text" hidden name="value"value="RECEIVE">
-      <input type="number" hidden name="id" value="{{ i.id }}">
-      <input type="submit" name="request" value="RECEIVE">
+        <input type="text" hidden name="value"value="RECEIVE">
+        <input type="number" hidden name="id" value="{{ i.id }}">
+        <input type="submit" name="request" value="RECEIVE">
       </form>
       {% endif %}
 

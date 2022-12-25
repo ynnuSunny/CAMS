@@ -12,5 +12,12 @@ class Assets(models.Model):
     is_free = models.BooleanField(default=True)
     date_posted = models.DateField(default=timezone.now)
     image = models.CharField(max_length=100)
+
+class AssetLogs(models.Model):
+    activity = models.CharField(max_length=100)
+    assets_id = models.PositiveIntegerField(null=True)
+    accept_reason = models.CharField(max_length=100)
+    date_of_activity = models.DateTimeField(default=timezone.now)
+
     
         
