@@ -23,6 +23,18 @@ def add_assets(request):
 
         return redirect("view-assets")
 
+@login_required
 def view_assets(request):
-    return render(request,"view-assets.html")
-    
+    user = request.user
+    assets = Assets.objects.filter(company_id = user.company_id)
+    fs = FileSystemStorage()
+    allAssets = []
+    for i in assets:
+        i.image = fs.url(i.image)
+        allAssets.append(i)
+    context = {
+        'assets' : allAssets
+    }
+    return render(request,"view-assets.html",context)
+
+

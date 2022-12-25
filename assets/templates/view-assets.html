@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+
+    {% for i in assets %}
+      <p>{{ i.assets_name }}</p>
+      <img src="{{ i.image }}" alt="">
+      <br>
+    {% endfor %}
     
 </body>
 </html>
