@@ -11,6 +11,7 @@ def index(request):
     if request.user.is_authenticated:
         return redirect('home')
     return render(request,"index.html")
+
 def create_manager(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -57,13 +58,17 @@ def logout(request):
 
 @login_required
 def home(request):
-    return render(request,"home.html")
+    return render(request,"home.html",{ 'role': request.user.role})
 
 @login_required
 def create_user(request):
+    manager = request.user
+
+    if manager.role=="EMPLOYEE":
+        return HttpResponse("<h1>User are not authorized to create account <h1>")
 
     if request.method=='POST':
-        manager = request.user
+        
         company_name = manager.company_name
         company_website = manager.company_name
         company_id = manager.company_id
