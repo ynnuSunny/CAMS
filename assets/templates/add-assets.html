@@ -7,13 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" action="{% url 'add-assets' %}">
         {% csrf_token %}
-            <input type="text" name="assets-name" placeholder="Assets Name">
+            <input type="text" name="assets-name" required placeholder="Assets Name">
             <br>
-            <input type="file" name="upload" required accept="image/*">
+            <input type="file" name="image" required accept="image/*">
             <br>
-            <input type="sunmit" value="Add">
+            <input type="submit" value="Add">
       </form>
 </body>
 </html>
