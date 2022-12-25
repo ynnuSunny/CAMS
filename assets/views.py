@@ -37,4 +37,19 @@ def view_assets(request):
     }
     return render(request,"view-assets.html",context)
 
+@login_required
+def request_assets(request):
+    if(request.method=="POST"):
+        user = request.user
+        id = request.POST['id']
+        request_reason = request.POST["request_reason"]
+        assets = Assets.objects.get(id=id)
+        assets.request_reason=request_reason
+        assets.request_by = user.id
+        assets.save()
+        
+
+        return render(request,"view-assets.html")
+        
+
 

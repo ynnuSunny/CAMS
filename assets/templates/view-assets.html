@@ -12,6 +12,13 @@
       <p>{{ i.assets_name }}</p>
       <img src="{{ i.image }}" alt="">
       <br>
+
+      <form method ="POST" action="{% url 'request-assets' %}">
+          {% csrf_token %}
+          <input type="text" placeholder="request reason" name="request_reason">
+          <input type="number" hidden name="id" value="{{ i.id }}">
+          <input type="submit" name="request" value="request">
+      </form>
     {% endfor %}
     
 </body>
