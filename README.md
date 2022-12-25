@@ -4,16 +4,7 @@
   <strong>Corporate Assets Management System</strong>
 </div>
 <br>
-<div align="center">
-  <!-- Release Version -->
-    <img src="https://img.shields.io/github/tag/Ahsan40/course-assistant?color=blue&label=Release&style=for-the-badge" alt="Release Version" />
-  <!-- Last Updated (Does not show Date, Only month and year)-->
-    <!-- <img src="https://img.shields.io/github/release-date/Ahsan40/course-assistant?color=green&label=Updated&style=for-the-badge" alt="Release Date" /> -->
-  <!-- Downloads Size -->
-    <img src="https://img.shields.io/github/repo-size/Ahsan40/course-assistant?color=orange&label=Size&style=for-the-badge" alt="Downloads Size" />
-  <!-- Download counts -->
-    <img src="https://img.shields.io/github/downloads/Ahsan40/course-assistant/total?color=green&style=for-the-badge" alt="Download Count" />
-</div>
+
 
 
 &nbsp;
