@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% for i in assets %}
+      <p>{{ i.assets_name }}</p>
+      <img src="{{ i.image }}" alt="">
+      <br>
+      
+      {% if i.request_accepted_by is NULL%}
+
+      <form method ="POST" action="{% url 'assets-persmission' %}">
+          {% csrf_token %}
+          <input type="text" hidden name="value" value="ACCEPT">
+          <input type="number" hidden name="id" value="{{ i.id }}">
+          <input type="submit" name="request" value="ACCEPT">
+      </form>
+      <form method ="POST" action="{% url 'assets-persmission' %}">
+        {% csrf_token %}
+        <input type="text" hidden name="value"value="REJECT">
+        <input type="number" hidden name="id" value="{{ i.id }}">
+        <input type="submit" name="request" value="REJECT">
+      </form>
+
+      {% endif %}
+      {% if i.request_accepted_by is not NULL %}
+      <input type="text" hidden name="value"value="RECEIVE">
+      <input type="number" hidden name="id" value="{{ i.id }}">
+      <input type="submit" name="request" value="RECEIVE">
+      {% endif %}
+
+    {% endfor %}
+    
+</body>
+</html>
