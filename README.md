@@ -23,7 +23,7 @@
 ## 📜 **Features**
     * Create several companies via manager
     * manager can add staff and employee
-    * staff also can eployee and assets
+    * staff also can add eployee and assets
     * Asets Tracker
     * Asets logs
    
